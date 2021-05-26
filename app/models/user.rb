@@ -6,4 +6,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
     # password付き（暗号化）のモデルを作成
     has_secure_password
+    
+    has_many :posts
 end
