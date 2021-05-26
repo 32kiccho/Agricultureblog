@@ -1,6 +1,11 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>Welcome to the Agriculture Blog</h1>
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+<% if logged_in? %>
+  <p>ログイン完了ユーザー: <%= current_user.name %></p>
+# ログインしていない場合はSign up now!」ボタンのある画面を表示
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the Agriculture Blog</h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   </div>
-</div>
+<% end %>
