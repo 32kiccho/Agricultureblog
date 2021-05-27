@@ -10,9 +10,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  # 投稿の数をカウントする
   def counts(user)
+    # 投稿の数をカウントする
     @count_posts = user.posts.count
+    # フォロー数
+    @count_followings = user.followings.count
+    # フォローワー数
+    @count_followers = user.followers.count
   end
   
 end
