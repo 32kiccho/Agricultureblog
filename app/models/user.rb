@@ -29,4 +29,10 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
+  
+  # タイムライン用のポストを取得する為のメソッド
+  def feed_posts
+    Post.where(user_id: self.following_ids + [self.id])
+  end
+  
 end
