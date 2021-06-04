@@ -1,6 +1,6 @@
 <% if current_user.like?(post) %>
   <!--Likeされている場合Unlikeボタンを表示-->
-  <%= form_for(current_user.likes.find_by(post_id, post.id), html: {method: :delete}) do |f| %>
+  <%= form_for(current_user.likes.find_by('post_id', post.id), html: {method: :delete}) do |f| %>
     <!--":post_id = リクエストパラメーターキー"に対して、何の"id値 = post.id"を設定したいのか-->
     <%= hidden_field_tag :post_id, post.id %>
     <%= f.submit 'Unlike',class: 'btn-warning btn-xs' %>

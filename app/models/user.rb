@@ -39,18 +39,20 @@ class User < ApplicationRecord
   
   # いいねをするメソッド
   def like(other_post)
-    likes.find_or_create_by(post: other_post)
+    unless self == other_post
+      self.likes.find_or_create_by(post_id: other_post.id)
+    end
   end
   
   # いいねを外すメソッド
   def unlike(other_post)
-    like_posts.delete(post)
+    likes == self.likes.find_by(post_id: other_post.id)
+    likes.destroy if likes
   end
   
   # 既にいいねしていないか確認
   def like?(other_post)
-  logger.debug(like_posts.inspect)
-  like_posts.include?(posts)
+    other_post.likes.exists?(post_id: other_post.id)
   end
   
 end
