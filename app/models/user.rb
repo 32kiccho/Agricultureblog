@@ -46,7 +46,7 @@ class User < ApplicationRecord
   
   # いいねを外すメソッド
   def unlike(other_post)
-    likes == self.likes.find_by(post_id: other_post.id)
+    likes = self.likes.find_by(post_id: other_post.id)
     likes.destroy if likes
   end
   
